@@ -87,16 +87,22 @@ Combinando análise exploratória de dados, modelagem preditiva e interpretaçã
 ##  Como Executar o Projeto 🚀
 
 ### 1. Instalar bibliotecas necessárias
+Certifique-se de ter Python 3.10+ e instale os pacotes necessários:
+      
+      pip install pandas scikit-learn matplotlib seaborn imbalanced-learn
+
 ### 2. Carregar os dados
-       Coloque o arquivo dados_tratados.csv na pasta data/.
+- Coloque o arquivo dados_tratados.csv na pasta data/.
+
 ### 3. Executar o notebook
-      Abra o notebook notebook/TelecomX_parte2.ipynb e execute as células passo a passo.
+- Abra o notebook notebook/TelecomX_parte2.ipynb e execute as células passo a passo.
+
 ### 4. Carregar o modelo treinado
       import pickle
-      with open('modelo/modelo_treinado.pkl', 'rb') as file:
+      with open('modelo/modeloTreinado.pkl', 'rb') as file:
            modelo = pickle.load(file)
       # Fazer previsões
-      y_pred = modelo.predict(X_novos_dados)
+      y_pred = modelo.predict(X_test)
 
 <div align="center">
     
