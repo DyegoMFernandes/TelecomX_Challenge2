@@ -4,73 +4,104 @@
 
 </div>
 
+
 <h1 align="center"> Análise de Evasão de Clientes na TelecomX </h1>
 
-Este é o terceiro projeto da ONE, onde realizo uma análise de dados da empresa TelecomX, gerando gráficos, identificando possíveis motivos de evasão de clientes e sugerindo estratégias de retenção.
+Neste projeto da ONE, procuramos antecipar a evasão de clientes (churn) em uma empresa de telecomunicações, utilizando informações comportamentais, contratuais e demográficas. Por meio de técnicas de ciência de dados, aprendizado de máquina e visualização, foram identificados os fatores mais relevantes que influenciam a saída de clientes, possibilitando a proposição de estratégias eficazes de retenção.
 
-<img width="1295" height="673" alt="image" src="https://github.com/user-attachments/assets/b06fbe25-82a4-48bb-93a9-061f3c5e028b" />
+<img width="984" height="584" alt="Sem título" src="https://github.com/user-attachments/assets/016b9116-17df-460e-ac99-b289e840f421" />
 
 ## Descrição do Projeto 📄
 
-Este projeto apresenta uma análise exploratória aprofundada dos dados de clientes da TelecomX, com o objetivo de identificar os fatores que mais contribuem para a evasão de clientes.
+Este projeto apresenta uma análise exploratória de dados (AED) e modelagem preditiva da evasão de clientes da TelecomX, com foco em identificar variáveis-chave que afetam o comportamento de cancelamento e em recomendar ações estratégicas.
 
 ## Fonte de Dados 📊
 
-Os dados utilizados foram obtidos de um arquivo JSON fornecido especificamente para este estudo.
+Os dados foram obtidos de um arquivo JSON fornecido para estudo:
 
-[Conjunto de Dados Utilizado](https://raw.githubusercontent.com/alura-cursos/challenge2-data-science/refs/heads/main/TelecomX_Data.json)  
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mAiJTamVKmbSFuUBxvQk0fEO0bWTP00u?usp=sharing)
+<div align="center">
+   
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]((https://colab.research.google.com/drive/1D4cNvRj0wmaXA9ei0SjeOMdBOpx02ijZ?usp=sharing))
+</div>
 
 ## Etapas da Análise 🔍
 
 1. **Extração e Carregamento**  
-   - Carregamento dos dados a partir da fonte fornecida e conversão para um DataFrame do Pandas.
+   - Carregamento dos dados do JSON e conversão para DataFrame do Pandas.
 
 2. **Exploração Inicial**  
-   - Análise das informações básicas do dataset, incluindo tipos de variáveis e verificação de valores ausentes.
+   - Verificação de tipos de variáveis, valores ausentes e estatísticas básicas.
 
 3. **Transformação e Limpeza**  
-   - Renomeação das colunas para português.  
-   - Conversão de valores categóricos (como "Sim", "Não", "Sem serviço") para valores numéricos.  
-   - Tratamento de inconsistências e valores ausentes nas colunas críticas (*evasão* e *gasto_total*).  
-   - Garantia de consistência entre presença de serviços de internet/telefone e serviços adicionais.
+   - Renomeação de colunas para português.  
+   - Conversão de variáveis categóricas em numéricas.  
+   - Tratamento de inconsistências e valores ausentes nas colunas críticas (*evasão*, *gasto_total*).  
+   - Ajuste da consistência entre serviços de internet/telefone e serviços adicionais.
 
 4. **Análise Exploratória de Dados (AED)**  
-   - Avaliação da distribuição da variável alvo (*evasão*).  
-   - Estudo da relação entre evasão e variáveis categóricas: gênero, parceiro, dependentes, faixa etária, tipo de contrato, método de pagamento, serviço de internet e serviços adicionais.  
-   - Análise da relação entre evasão e variáveis numéricas (meses de contrato, valor mensal, gasto total), incluindo agrupamento por trimestres de permanência.  
-   - Cálculo da matriz de correlação entre variáveis selecionadas, considerando apenas clientes com serviço de internet.
+   - Distribuição da variável alvo (*evasão*).  
+   - Relação entre evasão e variáveis categóricas: gênero, parceiro, dependentes, faixa etária, tipo de contrato, método de pagamento e serviços adicionais.  
+   - Relação entre evasão e variáveis numéricas: meses de contrato, total mensal, gasto total, contas diárias.  
+   - Correlações entre variáveis, considerando apenas clientes com internet.
 
 5. **Visualização de Dados**  
-   - Criação de gráficos (histogramas, boxplots e countplots) para compreensão da distribuição das variáveis e sua relação com a evasão.  
-   - Heatmaps para facilitar a análise das correlações, incluindo serviços adicionais como Backup, Proteção de Dispositivo, Antivírus e Suporte Técnico.
+   - Histogramas, boxplots e countplots para distribuição das variáveis e relação com evasão.  
+   - Heatmaps para análise de correlação entre serviços adicionais (Backup, Proteção de Dispositivo, Antivírus, Suporte Técnico, Streaming).
 
 ## Principais Descobertas 💡
 
-- A taxa geral de evasão é de aproximadamente **26,6%**.  
-- Clientes com contratos **mensais** apresentam maior risco de evasão comparado a contratos de longo prazo.  
-- O método de pagamento **cheque eletrônico** está fortemente associado a cancelamentos.  
-- Clientes com **internet por fibra óptica** apresentam maior taxa de evasão.  
-- A evasão é mais intensa nos **primeiros meses de contrato**.  
-- **Contas mensais mais altas** aumentam a probabilidade de cancelamento.  
-- **Serviços adicionais de internet** impactam a evasão:  
-  - **Backup Online, Proteção de Dispositivo, Antivírus e Suporte Técnico** estão associados a maior risco de cancelamento.  
-  - **Streaming de TV e Filmes** também apresentam correlação positiva com evasão, possivelmente devido ao custo adicional ou percepção de baixo valor.
+- A taxa geral de evasão é de **26,6%**.  
+- Contratos **mensais** aumentam risco de evasão comparado a contratos de longo prazo.  
+- **Cheque eletrônico** é um método de pagamento associado a cancelamentos.  
+- **Internet por fibra óptica** apresenta maior risco de evasão.  
+- Evasão concentrada nos **primeiros meses de contrato**.  
+- **Contas mensais altas** e múltiplos serviços adicionais elevam probabilidade de cancelamento.  
 
-## Recomendações 📌
+### Variáveis mais relevantes (Regressão Logística)
 
-- Implementar **programas de integração e suporte** nos primeiros meses de contrato para reduzir a evasão inicial.  
-- Incentivar a adesão a **contratos mais longos**, aumentando a fidelidade.  
-- Avaliar e otimizar o **processo de pagamento por cheque eletrônico**.  
-- Melhorar a experiência de clientes com **internet por fibra óptica**, identificando pontos de insatisfação.  
-- Monitorar e otimizar **serviços adicionais** (Backup Online, Proteção de Dispositivo, Antivírus, Suporte Técnico, Streaming) para reduzir o risco de cancelamento.  
-- Criar **pacotes personalizados ou descontos** para clientes com contas mensais mais altas e múltiplos serviços adicionais.
+| Nº | Variável | Coeficiente | Impacto |
+|----|----------|------------|---------|
+| 1  | meses_contrato | -1.233145 | Reduz evasão |
+| 2  | gasto_total | 0.566288 | Aumenta evasão |
+| 3  | total_mensal | 0.445933 | Aumenta evasão |
+| 4  | contas_diarias | 0.445933 | Aumenta evasão |
+| 5  | tipo_contrato_two year | -0.309434 | Reduz evasão |
+| 6  | tipo_contrato_month-to-month | 0.303404 | Aumenta evasão |
+| 7  | servico_telefone_True | -0.147298 | Reduz evasão |
+| 8  | servico_telefone_False | 0.147298 | Aumenta evasão |
+| 9  | metodo_pagamento_electronic check | 0.145509 | Aumenta evasão |
+| 10 | suporte_tecnico_False | 0.111128 | Aumenta evasão |
+
+## Recomendações Estratégicas 📌
+
+- **Reengajamento inicial:** campanhas para clientes inativos nos primeiros meses.  
+- **Incentivo a contratos longos:** reduzir evasão oferecendo benefícios.  
+- **Otimização do método de pagamento:** atenção especial ao cheque eletrônico.  
+- **Melhoria do serviço de internet:** reduzir pontos de insatisfação em fibra óptica.  
+- **Gestão de serviços adicionais:** otimizar Backup, Proteção de Dispositivo, Antivírus, Suporte Técnico e Streaming.  
+- **Pacotes e descontos personalizados:** clientes com contas altas e múltiplos serviços.
+
+## Conclusão 🔥
+Combinando análise exploratória de dados, modelagem preditiva e interpretação das variáveis mais relevantes, este projeto cria uma base sólida para identificar clientes em risco de evasão. Os insights obtidos permitem a tomada de decisões estratégicas e a implementação de ações direcionadas para melhorar a retenção de clientes.
+
+##  Como Executar o Projeto 🚀
+
+### 1. Instalar bibliotecas necessárias
+### 2. Carregar os dados
+       Coloque o arquivo dados_tratados.csv na pasta data/.
+### 3. Executar o notebook
+      Abra o notebook notebook/TelecomX_parte2.ipynb e execute as células passo a passo.
+### 4. Carregar o modelo treinado
+      import pickle
+      with open('modelo/modelo_treinado.pkl', 'rb') as file:
+           modelo = pickle.load(file)
+      # Fazer previsões
+      y_pred = modelo.predict(X_novos_dados)
 
 <div align="center">
     
-![HTML](https://img.shields.io/badge/Python-red)
+![Python](https://img.shields.io/badge/Python-red)
 
 <p align="center">
-<img alt="Static Badge" src="https://img.shields.io/badge/STATUS-FINALIZADO-Green">
+<img alt="STATUS" src="https://img.shields.io/badge/STATUS-FINALIZADO-Green">
 </p>
